@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "غسان - المساعد الأدبي العُماني الذكي | مشروع المبادرة القرائية لمدرسة غسان بن عبدالله الخروصي",
   "main": "backend/server.py",
-  "scripts": {
-    "install": "cd frontend && yarn install",
-    "build": "cd frontend && npm run build",
-    "start": "cd backend && python server.py",
-    "dev": "concurrently \"cd frontend && npm start\" \"cd backend && uvicorn server:app --host 0.0.0.0 --port 8001 --reload\"",
+ "dev": "concurrently \"cd frontend && npm start\" \"cd backend && uvicorn server:app --host 0.0.0.0 --port 8001 --reload\"",
     "deploy": "npm run build && vercel --prod"
   },
   "keywords": [
