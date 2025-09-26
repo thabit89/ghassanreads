@@ -1,15 +1,14 @@
 [build]
+  # أمر تثبيت حزم Python
   command = "pip install -r requirements.txt"
-  # لا تغير هذا
   functions = "netlify/functions" 
+  
+  # ***** التعديل الحاسم هنا *****
+  # نحدد مجلد نشر غير موجود عمداً، أو مجرد نقطة (لأننا ننشر دوال فقط).
+  # سنستخدم نقطة للتأكد من تجاوز المشكلة.
+  publish = "." 
 
-# هذا الإعداد يضمن أن Netlify لا يجد شيئًا كصفحة رئيسية ثابتة 
-# (لأن مشروعك هو API في الغالب)
-publish = "public" 
-
-# ***** قسم التضمين الجديد *****
 [functions]
-  # هذا يخبر Netlify بتضمين مجلد backend بالكامل داخل الدالة
   included_files = ["backend/**"]
   
 [[redirects]]
