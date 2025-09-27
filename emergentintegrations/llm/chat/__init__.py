@@ -1,3 +1,5 @@
 # في ملف emergentintegrations/llm/chat/__init__.py
-from emergentintegrations.llm.chat.chat import LimChat # الاستيراد المطلق 
-from emergentintegrations.llm.chat.chat import UserMessage # الاستيراد المطلق
+
+# الاستيراد الصحيح: اذهب إلى الملف chat.py في نفس المجلد
+from .chat import LimChat 
+from .chat import UserMessage
