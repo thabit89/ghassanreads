@@ -27,6 +27,12 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
+# *************************************************************
+# Wrapper for Netlify Serverless Functions (Python)
+# *************************************************************
+from netlify_functions_python import serverless_wsgi
+# تأكد من أن متغير تطبيقك هو 'app' كما هو معرّف في مكان ما أعلى الملف
+handler = serverless_wsgi.handle_request(app)
 
 # إنشاء خدمة الدردشة وقاعدة المعرفة والنظم المتقدمة
 chat_service = ChatService(db)
