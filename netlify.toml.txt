@@ -9,6 +9,8 @@
   publish = "." 
 
 [functions]
+  # هذا السطر يطلب من Netlify تضمين مجلد 'backend' بالكامل،
+  # حيث توجد ملفات 'services' و 'server.py'
   included_files = ["backend/**"]
   
 [[redirects]]
