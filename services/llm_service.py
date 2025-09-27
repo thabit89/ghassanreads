@@ -1,6 +1,6 @@
 import os
 from typing import List, Dict, Any, Optional
-# from emergentintegrations.llm.chat import LimChat, UserMessage
+# from emergentintegrations.llm.chat import LimChat, UserMessage # مُعطَّل بسبب الملفات المفقودة
 from dotenv import load_dotenv
 import logging
 import uuid
@@ -67,68 +67,28 @@ class GhassanLLMService:
         use_claude: bool = False,
         conversation_context: str = ""
     ) -> Dict[str, Any]:
-        """توليد رد مع نتائج البحث"""
-        try:
-            # إنشاء session_id إذا لم يكن موجوداً
-            if not session_id:
-                session_id = str(uuid.uuid4())
-            
-            # اختيار المفتاح والنموذج المناسب
-            if use_claude and self.anthropic_key:
-                # استخدام Claude الخاص للتحليل الأدبي المتقدم
-                api_key = self.anthropic_key
-                provider = "anthropic"
-                model = "claude-3-5-sonnet-20241022"  # أحدث نموذج Claude
-                logger.info(f"استخدام Claude الخاص للتحليل الأدبي: {user_message[:50]}...")
-            else:
-                # استخدام Emergent للاستفسارات العامة
-                api_key = self.emergent_key
-                provider = "openai"
-                model = "gpt-4o"
-                logger.info(f"استخدام GPT-4o للاستفسارات العامة: {user_message[:50]}...")
-            
-            # إعداد الـ chat client
-# chat client إعداد الـ #
-# chat = LimChat(
-#     api_key=api_key,
-#     session_id=session_id,
-#     system_message=self.system_message
-# ).with_model(provider, model)
-chat = None
-            
-            # إعداد الرسالة مع نتائج البحث والسياق والتعليمي والتحقق من الدقة
-            enhanced_message = self._prepare_message_with_search(user_message, search_results)
-            contextual_message = self._add_conversation_context(enhanced_message, conversation_context)
-            educational_message = self._add_educational_context(contextual_message, "")
-            final_message = self._add_advanced_instructions(educational_message)
-            
-# # إنشاء كائن UserMessage
-# user_msg = UserMessage(text=final_message)
+        """توليد رد مع نتائج البحث (تم تعطيله مؤقتاً بسبب ملفات الدردشة المفقودة)"""
+        
+        # 🚨🚨🚨 كود الدردشة مُعطَّل مؤقتاً لضمان نجاح النشر 🚨🚨🚨
 
-# # إرسال الرسالة والحصول على الرد
-# response = await chat.send_message(user_msg)
-# أضف هذا السطر بعد الكود المُعطل لضمان أن الوظيفة لا تفشل في الإرجاع
-return "Function temporarily disabled. Please restore source files."
+        # تعويض آمن لضمان أن الوظيفة ترجع قيمة صالحة دون الاعتماد على كود الدردشة المفقود
+        
+        # إنشاء session_id إذا لم يكن موجوداً
+        if not session_id:
+            session_id = str(uuid.uuid4())
             
-            return {
-                'text': response,
-                'session_id': session_id,
-                'model_used': f"{provider}:{model}" + ("(خاص)" if use_claude and self.anthropic_key else ""),
-                'has_search_results': bool(search_results),
-                'search_results_count': len(search_results) if search_results else 0
-            }
-            
-        except Exception as e:
-            logger.error(f"خطأ في توليد الرد: {e}")
-            return {
-                'text': 'عذراً، حدث خطأ في معالجة طلبك. أرجو المحاولة مرة أخرى.',
-                'session_id': session_id or str(uuid.uuid4()),
-                'model_used': 'error',
-                'has_search_results': False,
-                'search_results_count': 0,
-                'error': str(e)
-            }
-    
+        # إضافة التعويض النهائي (سيعمل هذا الآن لأنه خارج try/except ومع مسافة بادئة صحيحة)
+        return {
+            'text': 'عذراً، وظيفة الدردشة مُعطَّلة مؤقتاً. يرجى استعادة ملفات الكود المصدر المفقودة (مثل LimChat) لإعادة تفعيلها.',
+            'session_id': session_id,
+            'model_used': 'disabled_placeholder',
+            'has_search_results': False,
+            'search_results_count': 0,
+            'error': 'Missing core chat functionality'
+        }
+
+        # 🚨🚨🚨 هنا كان يوجد كود الدردشة و try/except الذي تم تعطيله 🚨🚨🚨
+        
     def _prepare_message_with_search(
         self, 
         user_message: str, 
