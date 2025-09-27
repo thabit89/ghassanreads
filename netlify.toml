@@ -1,0 +1,19 @@
+[build]
+  # أمر تثبيت حزم Python
+  command = "pip install -r requirements.txt"
+  
+  # يجب وضع publish هنا لحل مشكلة 'Deploy directory public does not exist'
+  publish = "." 
+
+[functions]
+  # تحديد مكان مجلد الدوال الجديد الذي أنشأته
+  directory = "netlify/functions"
+  
+  # تضمين مجلد الخدمات (Services) لنجاح الاستيراد في main.py
+  included_files = ["backend/**"]
+  
+[[redirects]]
+  # إعادة توجيه أي مسار يبدأ بـ /api/ إلى دالة main
+  from = "/api/*" 
+  to = "/.netlify/functions/main" 
+  status = 200
