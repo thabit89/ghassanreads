@@ -1,6 +1,6 @@
 import os
 from typing import List, Dict, Any, Optional
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+#from emergentintegrations.llm.chat import LlmChat, UserMessage
 from dotenv import load_dotenv
 import logging
 import uuid
@@ -88,11 +88,12 @@ class GhassanLLMService:
                 logger.info(f"استخدام GPT-4o للاستفسارات العامة: {user_message[:50]}...")
             
             # إعداد الـ chat client
-            chat = LlmChat(
-                api_key=api_key,
-                session_id=session_id,
-                system_message=self.system_message
-            ).with_model(provider, model)
+# chat = LimChat(
+#     api_key=api_key,
+#     session_id=session_id,
+#     system_message=self.system_message
+# ).with_model(provider, model)
+chat = None # أو أي قيمة فارغة لتجنب خطأ NameError
             
             # إعداد الرسالة مع نتائج البحث والسياق والتعليمي والتحقق من الدقة
             enhanced_message = self._prepare_message_with_search(user_message, search_results)
