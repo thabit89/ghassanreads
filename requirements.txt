@@ -15,5 +15,5 @@ pyjwt>=2.10.1
 mangum
 gunicorn
 aiohttp
-tavily
+tavily-python
 # Final check for deployment
