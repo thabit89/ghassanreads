@@ -1,6 +1,6 @@
 import os
 from typing import List, Dict, Any, Optional
-#from emergentintegrations.llm.chat import LlmChat, UserMessage
+# from emergentintegrations.llm.chat import LimChat, UserMessage
 from dotenv import load_dotenv
 import logging
 import uuid
@@ -102,12 +102,13 @@ chat = None
             educational_message = self._add_educational_context(contextual_message, "")
             final_message = self._add_advanced_instructions(educational_message)
             
-      # # إنشاء كائن UserMessage
+# # إنشاء كائن UserMessage
 # user_msg = UserMessage(text=final_message)
 
 # # إرسال الرسالة والحصول على الرد
 # response = await chat.send_message(user_msg)
-response = "Function temporarily disabled due to missing 'emergentintegrations' code."
+# أضف هذا السطر بعد الكود المُعطل لضمان أن الوظيفة لا تفشل في الإرجاع
+return "Function temporarily disabled. Please restore source files."
             
             return {
                 'text': response,
